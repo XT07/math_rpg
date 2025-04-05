@@ -2,7 +2,7 @@
 
 Uma plataforma interativa para ajudar as pessoas a aprenderem matemática básica através de jogos, com um sistema de ranking para estimular o progresso dos usuários.  
 
-## ⚠️ Importante  
+### ⚠️ Importante  
 
 - Todos os arquivos `.html` devem ser convertidos para `.ejs`, pois utilizamos o EJS como motor de templates no Node.js.  
 - Todos os arquivos estáticos (CSS, JS, imagens, etc.) devem ser armazenados dentro da pasta `public`.  
