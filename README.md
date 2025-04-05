@@ -1,8 +1,14 @@
-# site de hospedagem de jogos teste
-site para as pessoas aprenderem matemática básica com um sistema de ranking
+# 🎮 Site de Hospedagem de Jogos de Aprendizagem  
 
-### lembretes
-Todos os arquivos que seriam .html mudem para .ejs pois ele eh um interpretador de html para node e todos os arquivos estaticos deverão ficar dentro da pasta public. qual quer arquivo dentro dessas pastas sitadas não precisarão ser sitadas os caminhos completos delas pois elas já forma configuradas no index.js e elas tem que ficar na raiz do projeto ex:
+Uma plataforma interativa para ajudar as pessoas a aprenderem matemática básica através de jogos, com um sistema de ranking para estimular o progresso dos usuários.  
+
+## ⚠️ Importante  
+
+- Todos os arquivos `.html` devem ser convertidos para `.ejs`, pois utilizamos o EJS como motor de templates no Node.js.  
+- Todos os arquivos estáticos (CSS, JS, imagens, etc.) devem ser armazenados dentro da pasta `public`.  
+- As pastas `views/` e `public/` **já foram configuradas no `index.js`**, portanto, **não é necessário incluí-las ao referenciar arquivos**.  
+
+### 📌 Exemplos de Referência Correta e Incorreta  
 
 views/partials/head.ejs = errado
 partials/head.ejs = certo
@@ -10,4 +16,4 @@ partials/head.ejs = certo
 view/home.ejs = errado
 home.ejs = certo
 
-ou seja ou public e o views não precisam ser citados, apenas as subpastas
+Ou seja, ao referenciar arquivos, mencione apenas a subpasta e o nome do arquivo, pois os diretórios views/ e public/ já estão pré-configurados.
