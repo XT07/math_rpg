@@ -1,6 +1,6 @@
 # 🎮 Site de Hospedagem de Jogos de Aprendizagem  
 
-Uma plataforma interativa para ajudar as pessoas a aprenderem matemática básica através de jogos, com um sistema de ranking para estimular o progresso dos usuários.  
+Plataforma interativa para o aprendizado de matemática básica por meio de um jogo com elementos de RPG. Os usuários podem testar seus conhecimentos, acompanhar seu desempenho e competir em um sistema de ranking em tempo real.  
 
 ### ⚠️ Importante  
 
