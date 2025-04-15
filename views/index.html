@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Províncias de Numerath</title>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- MENU FIXO -->
+  <aside class="menu-lateral">
+    <ul>
+      <li onclick="abrirPainel('inicio')">Início</li>
+      <li onclick="abrirPainel('como-jogar')">Como Jogar</li>
+      <li onclick="abrirPainel('config')">Configurações</li>
+    </ul>
+  </aside>
+
+  <!-- PAINÉIS DESLIZANTES -->
+  <div id="painel-inicio" class="painel">Bem-vindo ao jogo!</div>
+  <div id="painel-como-jogar" class="painel">Aqui você aprende a jogar.</div>
+  <div id="painel-config" class="painel">Configurações do jogo.</div>
+
+  <!-- Conteúdo principal -->
+  <main class="conteudo">
+    <div class="ImagemTitulo">
+        <img src="LogoProjeto.png" alt="LogoProjeto">
+        <h1>Províncias de Numerath</h1>
+      </div>
+    <button class="jogar">JOGAR</button>
+  </main>
+
+  <script src="menu.js"></script>
+</body>
+</html>
