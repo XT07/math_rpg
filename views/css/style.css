@@ -37,6 +37,10 @@ body {
     margin: 20px 0;
     cursor: pointer;
     font-weight: bold;
+    white-space: nowrap; /* Impede a quebra de linha no texto */
+    overflow: hidden; /* Oculta qualquer parte do texto que ultrapasse */
+    text-overflow: ellipsis; /* Exibe "..." caso o texto ultrapasse */
+    max-width: 100%; /* Impede que o conteúdo ultrapasse a largura do menu */
   }
   
   /* Painel deslizante */
@@ -176,7 +180,7 @@ body {
   }
   
   .titulo h1 {
-    font-size: 60px;
+    font-size: 50px;
     color: #ff6a00;
     margin: 0;
     line-height: 1;
@@ -205,5 +209,6 @@ body {
     animation: bounceIn 0.6s ease-out;
   }
   
-  
-  
+  p {
+    line-height: 1;
+  }
