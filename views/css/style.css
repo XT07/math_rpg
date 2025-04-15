@@ -205,5 +205,8 @@ body {
     animation: bounceIn 0.6s ease-out;
   }
   
+  p {
+    line-height: 1.2;
+  }
   
   
