@@ -182,8 +182,8 @@ body {
   .titulo h1 {
     font-size: 50px;
     color: #ff6a00;
-    margin: 0;
-    line-height: 1;
+    margin: 0.50em 0; /* Espaçamento entre o título e a imagem */
+    line-height: 2px;
     text-align: center;
     font-family: 'Luckiest Guy', cursive; /* ou a fonte que você estiver usando */
     text-shadow: 
