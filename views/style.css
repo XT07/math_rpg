@@ -1,6 +1,6 @@
 /* Menu fixo lateral esquerdo */
 body {
-    background: black url('Floresta.png') no-repeat center center fixed;
+    background: black url('Fundo.png') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Luckiest Guy', sans-serif;
 }
@@ -69,19 +69,75 @@ body {
   .jogar {
     font-family: 'Luckiest Guy', sans-serif;
     text-shadow: 
-    1px 1px 0px #000, /* contorno superior e à direita */
-    -1px -1px 0px #000, /* contorno inferior e à esquerda */
-    1px -1px 0px #000, /* contorno superior e à esquerda */
-    -1px 1px 0px #000; /* contorno inferior e à direita */
+      1px 1px 0px #000,
+      -1px -1px 0px #000,
+      1px -1px 0px #000,
+      -1px 1px 0px #000;
     padding: 20px 150px;
     font-size: 40px;
     font-weight: 900;
-    background-color: #ff6a00;
-    border: 1px solid black;
+    background: #c66b1f; /* cor madeira cartoon */
+    border: 4px solid #8b3d00;
     color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
+    position: relative;
     cursor: pointer;
+    transition: transform 0.1s ease;
+    box-shadow: inset -2px -2px 0 #9b4a12, inset 2px 2px 0 #e0863c, 0 4px 0 #5a2800;
+    margin-top: 30px;
   }
+
+  .jogar:active {
+    transform: scale(0.95); /* Reduz o tamanho do botão para simular um clique */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra para destacar o clique */
+  }
+  
+  /* Pregos estilo cartoon nos cantos com pseudo-elementos */
+  .jogar::before,
+  .jogar::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #aaa;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px #000000aa;
+  }
+  
+  /* canto superior esquerdo */
+  .jogar::before {
+    top: 6px;
+    left: 6px;
+  }
+  
+  /* canto inferior direito */
+  .jogar::after {
+    bottom: 6px;
+    right: 6px;
+  }
+  
+  /* Pregos adicionais */
+  .jogar span.prego {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #aaa;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px #000000aa;
+  }
+  
+  .jogar span.prego.top-right {
+    top: 6px;
+    right: 6px;
+  }
+  
+  .jogar span.prego.bottom-left {
+    bottom: 6px;
+    left: 6px;
+  }
+  
 
   .ImagemTitulo {
     text-align: center; /* Centraliza o conteúdo */
@@ -94,15 +150,47 @@ body {
     object-fit: cover; /* A imagem se ajusta sem distorção */ /* Espaçamento entre a imagem e o título */
   }
   
-  .ImagemTitulo h1 {
-    font-size: 60px;
-    color: #ff6a00; /* Exemplo de cor verde */
-    margin-top: 0;
-    text-shadow: 
-    1px 1px 0px #000, /* contorno superior e à direita */
-    -1px -1px 0px #000, /* contorno inferior e à esquerda */
-    1px -1px 0px #000, /* contorno superior e à esquerda */
-    -1px 1px 0px #000; /* contorno inferior e à direita */
+  .ImagemTitulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
   }
+  
+  .logo {
+    width: 120px; /* ajuste conforme necessário */
+    margin-bottom: -50px; /* aproxima a imagem do título */
+  }
+  
+  .titulo h1 {
+    font-size: 60px;
+    color: #ff6a00;
+    margin: 0;
+    line-height: 1;
+    text-align: center;
+    font-family: 'Luckiest Guy', cursive; /* ou a fonte que você estiver usando */
+    text-shadow: 
+      1px 1px 0px #000,
+      -1px -1px 0px #000,
+      1px -1px 0px #000,
+      -1px 1px 0px #000;
+  }
+  
+
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.95) translateY(-10px);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .ImagemTitulo h1 {
+    animation: bounceIn 0.6s ease-out;
+  }
+  
   
   
