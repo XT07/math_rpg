@@ -15,7 +15,7 @@ body {
   opacity: 0.8; /* opcional: controla a transparência do vídeo */
 }
 
-.menu-lateral {
+.menu-fixo {
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -26,15 +26,15 @@ body {
     height: 100vh;
     background: white;
     /*border: 4px solid #989898;*/
-    color: rgb(0, 0, 0);
     padding: 20px;
     overflow-x: hidden;
     transition: width 0.3s ease;
     z-index: 1000;
   }
 
-  .menu-lateral:hover {
-    width: 200px; /* largura expandida ao hover */
+  .menu-lateral{
+    display: flex;
+    position: relative;
   }
   
   .menu-lateral ul {
@@ -43,7 +43,7 @@ body {
     margin: 0;
   }
   
-  .menu-lateral li {
+  .menu-lateral i {
     margin: 20px 0;
     cursor: pointer;
     font-weight: bold;
@@ -51,10 +51,17 @@ body {
     overflow: hidden; /* Oculta qualquer parte do texto que ultrapasse */
     text-overflow: ellipsis; /* Exibe "..." caso o texto ultrapasse */
     max-width: 100%; /* Impede que o conteúdo ultrapasse a largura do menu */
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 50px; /* Espaçamento interno à esquerda */
   }
 
-  .menu-lateral li:hover {
-    background-color: #444;
+  .menu-lateral i:hover {
+    left: 20px;
+    overflow-y: hidden;
+    transition: width 0.3s ease;
+    z-index: 1000;
   }
   
   /* Painel deslizante */
