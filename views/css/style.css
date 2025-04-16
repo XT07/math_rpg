@@ -104,7 +104,6 @@ body {
     cursor: pointer;
     transition: transform 0.1s ease;
     box-shadow: inset -2px -2px 0 #9b4a12, inset 2px 2px 0 #e0863c, 0 4px 0 #5a2800;
-    margin-top: 30px;
   }
 
   .jogar:active {
