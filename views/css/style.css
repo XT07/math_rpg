@@ -25,16 +25,17 @@ body {
     width: 30px;
     height: 100vh;
     background: white;
-    border: 4px solid #989898;
+    /*border: 4px solid #989898;*/
     padding: 20px;
     overflow-x: hidden;
     transition: width 0.3s ease;
-    z-index: 1000;
+    z-index: 100;
   }
 
-  .menu-lateral{
+  .menu-lateral {
     display: flex;
     position: relative;
+    overflow: visible; /* garantir que o ícone possa ultrapassar */
   }
   
   .menu-lateral ul {
@@ -45,18 +46,19 @@ body {
 
   .menu-lateral i {
     background-color: #D9D9D9;
-    padding: 10px;
-    border-radius: 8px 0 0 8px;
-    margin-right: 10px;
-    min-width: 40px;
-    text-align: center;
+    border-radius: 0 8px 8px 0;
+    margin-right: 50px;
+    min-width: 100px;
+    text-align: right;
     position: relative;
     left: 0;
     transition: left 0.3s ease;
+    line-height: 100px;
+    z-index: 100;
   }
   
   .menu-lateral li:hover i {
-    left: 10px; /* valor ideal para o puxar suave */
+    left: 20px; /* aumenta ou ajusta conforme o efeito desejado */
   }
   
   /* Painel deslizante */
@@ -73,7 +75,7 @@ body {
     padding: 20px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease;
-    z-index: 100;
+    z-index: 10;
   }
   
   .painel.ativo {
