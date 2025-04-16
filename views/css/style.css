@@ -25,7 +25,7 @@ body {
     width: 30px;
     height: 100vh;
     background: white;
-    /*border: 4px solid #989898;*/
+    border: 4px solid #989898;
     padding: 20px;
     overflow-x: hidden;
     transition: width 0.3s ease;
@@ -42,26 +42,21 @@ body {
     padding: 0;
     margin: 0;
   }
-  
-  .menu-lateral i {
-    margin: 20px 0;
-    cursor: pointer;
-    font-weight: bold;
-    white-space: nowrap; /* Impede a quebra de linha no texto */
-    overflow: hidden; /* Oculta qualquer parte do texto que ultrapasse */
-    text-overflow: ellipsis; /* Exibe "..." caso o texto ultrapasse */
-    max-width: 100%; /* Impede que o conteúdo ultrapasse a largura do menu */
-    background-color: #D9D9D9;
-    border-radius: 5px;
-    padding: 10px;
-    padding-left: 50px; /* Espaçamento interno à esquerda */
-  }
 
-  .menu-lateral i:hover {
-    left: 20px;
-    overflow-y: hidden;
-    transition: width 0.3s ease;
-    z-index: 1000;
+  .menu-lateral i {
+    background-color: #D9D9D9;
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
+    margin-right: 10px;
+    min-width: 40px;
+    text-align: center;
+    position: relative;
+    left: 0;
+    transition: left 0.3s ease;
+  }
+  
+  .menu-lateral li:hover i {
+    left: 10px; /* valor ideal para o puxar suave */
   }
   
   /* Painel deslizante */
