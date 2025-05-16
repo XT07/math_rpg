@@ -5,6 +5,7 @@ body {
 }
 
 #telaJogo {
+  margin-top: 50px;
   display: flex;
   width: 1100px;
   height: 600px;
@@ -223,31 +224,34 @@ body {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  flex-direction: row;
+  display: flex;
+  flex-direction: column; /* vertical, logo em cima, texto embaixo */
   align-items: center;
-  margin-top: 0;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px 15px;
-  border-radius: 8px;
+  background: transparent; /* sem fundo */
+  padding: 0; /* sem padding */
+  border-radius: 0; /* sem borda arredondada */
   z-index: 1001;
   width: auto;
+  box-shadow: none; /* sem sombra */
 }
 
-.tela-ativa .ImagemTitulo img.logo {
-  width: 60px; /* menor que o normal */
-  margin: 0 10px 0 0;
+.tela-ativa .ImagemTitulo img {
+  width: 60px; /* logo menor */
+  height: auto;
+  margin-top: 1px;
+  object-fit: contain;
 }
 
 .tela-ativa .ImagemTitulo .titulo h1 {
-  font-size: 24px;
-  margin: 0 5px;
-  line-height: 1;
-  display: inline-block;
+  font-size: 22px;
+  margin-top: 2px;
   color: #ff6a00;
-  text-shadow:
-    1px 1px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000;
   font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+  line-height: 1;
+  text-shadow: 
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000;
 }
