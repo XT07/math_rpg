@@ -35,8 +35,15 @@ function iniciarJogo() {
   document.getElementById('botaoJogar').style.display = 'none';
 
   // Mostra a área do jogo
-  document.getElementById('telaJogo').style.display = 'block';
+  document.getElementById('telaJogo').style.display = 'flex'; // ou block, conforme seu css
 
-  // Se quiser simular um carregamento ou iniciar algo:
-  // setTimeout(() => iniciarJogoReal(), 1000);
+  // Ativa a classe tela-ativa no container principal (.conteudo)
+  document.querySelector('.conteudo').classList.add('tela-ativa');
+}
+
+// Se quiser, pode criar uma função para voltar (exemplo)
+function sairJogo() {
+  document.getElementById('botaoJogar').style.display = 'inline-block';
+  document.getElementById('telaJogo').style.display = 'none';
+  document.querySelector('.conteudo').classList.remove('tela-ativa');
 }

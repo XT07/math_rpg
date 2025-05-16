@@ -143,6 +143,42 @@ body {
       -1px 1px 0px #000;
   }
   
+.ImagemTitulo {
+  text-align: center; /* Centraliza o conteúdo */
+  position: relative;
+}
+
+.ImagemTitulo img {
+  width: 20%; /* Ajuste a largura da imagem */
+  max-height: 250px; /* Defina a altura máxima da imagem */
+  object-fit: cover; /* A imagem se ajusta sem distorção */
+}
+
+.ImagemTitulo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.logo {
+  width: 120px; /* ajuste conforme necessário */
+  margin-bottom: -50px; /* aproxima a imagem do título */
+}
+
+.titulo h1 {
+  font-size: 60px;
+  color: #ff6a00;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive; /* ou a fonte que você estiver usando */
+  text-shadow: 
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000;
+}
 
   @keyframes bounceIn {
     0% {
