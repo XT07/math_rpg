@@ -5,25 +5,25 @@ body {
 }
 
 #telaJogo {
-display: flex;
-width: 1100px;
-height: 600px;
-justify-content: center;
-align-items: center;
-background-color: #fff; /* ou transparente, depende do que quiser */
-font-family: 'Luckiest Guy', cursive;
-font-size: 2rem;
+  display: flex;
+  width: 1100px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* ou transparente, depende do que quiser */
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2rem;
 }
 
 #bg-video {
-position: fixed;
-top: 0;
-left: 0;
-min-width: 100%;
-min-height: 100%;
-object-fit: cover;
-z-index: -1;
-opacity: 0.8; /* opcional: controla a transparência do vídeo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.8; /* opcional: controla a transparência do vídeo */
 }
 
 .menu-lateral {
@@ -171,7 +171,7 @@ opacity: 0.8; /* opcional: controla a transparência do vídeo */
 .ImagemTitulo img {
   width: 20%; /* Ajuste a largura da imagem */
   max-height: 250px; /* Defina a altura máxima da imagem */
-  object-fit: cover; /* A imagem se ajusta sem distorção */ /* Espaçamento entre a imagem e o título */
+  object-fit: cover; /* A imagem se ajusta sem distorção */
 }
 
 .ImagemTitulo {
@@ -200,7 +200,6 @@ opacity: 0.8; /* opcional: controla a transparência do vídeo */
     -1px 1px 0px #000;
 }
 
-
 @keyframes bounceIn {
   0% {
     transform: scale(0.95) translateY(-10px);
@@ -216,4 +215,39 @@ opacity: 0.8; /* opcional: controla a transparência do vídeo */
   animation: bounceIn 0.6s ease-out;
 }
 
+/* NOVO: estilos para tela do jogo ativa */
+/* Quando a classe tela-ativa é adicionada ao container .conteudo, a logo fica pequena fixa no topo */
 
+.tela-ativa .ImagemTitulo {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 15px;
+  border-radius: 8px;
+  z-index: 1001;
+  width: auto;
+}
+
+.tela-ativa .ImagemTitulo img.logo {
+  width: 60px; /* menor que o normal */
+  margin: 0 10px 0 0;
+}
+
+.tela-ativa .ImagemTitulo .titulo h1 {
+  font-size: 24px;
+  margin: 0 5px;
+  line-height: 1;
+  display: inline-block;
+  color: #ff6a00;
+  text-shadow:
+    1px 1px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+  font-family: 'Luckiest Guy', cursive;
+}
