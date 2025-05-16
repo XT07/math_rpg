@@ -6,27 +6,17 @@
   <title>Províncias de Numerath</title>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
+
+  <div id="header"></div>
+
   <!-- Fundo animado -->
   <video autoplay muted loop id="bg-video">
     <source src="img/FundoAnimado.mp4" type="video/mp4">
     Seu navegador não suporta vídeos em HTML5.
   </video>
-
-  <!-- Menu lateral fixo -->
-  <aside class="menu-lateral">
-    <ul>
-      <li onclick="abrirPainel('inicio')">Início</li>
-      <li onclick="abrirPainel('como-jogar')">Como Jogar</li>
-      <li onclick="abrirPainel('config')">Configurações</li>
-    </ul>
-  </aside>
-
-  <!-- Painéis deslizantes -->
-  <div id="painel-inicio" class="painel">Bem-vindo ao jogo!</div>
-  <div id="painel-como-jogar" class="painel">Aqui você aprende a jogar.</div>
-  <div id="painel-config" class="painel">Configurações do jogo.</div>
 
   <!-- Conteúdo principal central -->
   <main class="conteudo">
@@ -54,5 +44,10 @@
 
   <!-- Scripts -->
   <script src="js/menu.js"></script>
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+  </script>
 </body>
 </html>
