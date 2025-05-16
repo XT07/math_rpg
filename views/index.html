@@ -5,54 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Províncias de Numerath</title>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- MENU FIXO -->
-
-  <div class="menu-fixo">
-  </div>
-  <aside class="menu-lateral">
-    <ul>
-      <li onclick="abrirPainel('inicio')">
-        <i class="fa-solid fa-house"></i> <!-- Ícone de casa -->
-      </li>
-      <li onclick="abrirPainel('como-jogar')">
-        <i class="fa-solid fa-book-open"></i>
-      </li>
-      <li onclick="abrirPainel('config')">
-        <i class="fa-solid fa-user-gear"></i>
-      </li>
-    </ul>
-  </aside>
-
-
-  <!-- PAINÉIS DESLIZANTES -->
-  <div id="painel-inicio" class="painel">Bem-vindo ao jogo!</div>
-  <div id="painel-como-jogar" class="painel">Aqui você aprende a jogar.</div>
-  <div id="painel-config" class="painel">Configurações do jogo.</div>
-
-  <!-- Conteúdo principal -->
-  <main class="conteudo">
-    <div class="ImagemTitulo">
-      <img src="img/LogoProjeto.png" alt="LogoProjeto" class="logo">
-      <div class="titulo">
-        <h1>PROVÍNCIAS DE<p>NUMERATH</h1>
-      </div>
-    </div>
-    <button class="jogar">
-      JOGAR
-      <span class="prego top-right"></span>
-      <span class="prego bottom-left"></span>
-    </button>
-  </main>
-  
+  <!-- Fundo animado -->
   <video autoplay muted loop id="bg-video">
     <source src="img/FundoAnimado.mp4" type="video/mp4">
     Seu navegador não suporta vídeos em HTML5.
   </video>
 
+  <!-- Menu lateral fixo -->
+  <aside class="menu-lateral">
+    <ul>
+      <li onclick="abrirPainel('inicio')">Início</li>
+      <li onclick="abrirPainel('como-jogar')">Como Jogar</li>
+      <li onclick="abrirPainel('config')">Configurações</li>
+    </ul>
+  </aside>
+
+  <!-- Painéis deslizantes -->
+  <div id="painel-inicio" class="painel">Bem-vindo ao jogo!</div>
+  <div id="painel-como-jogar" class="painel">Aqui você aprende a jogar.</div>
+  <div id="painel-config" class="painel">Configurações do jogo.</div>
+
+  <!-- Conteúdo principal central -->
+  <main class="conteudo">
+    <div class="ImagemTitulo">
+      <img src="img/LogoProjeto.png" alt="LogoProjeto" class="logo">
+      <div class="titulo">
+        <h1>PROVÍNCIAS DE</h1>
+        <h1>NUMERATH</h1>
+      </div>
+    </div>
+
+    <!-- Botão "JOGAR" -->
+    <button id="botaoJogar" class="jogar" onclick="iniciarJogo()">
+      JOGAR
+      <span class="prego top-right"></span>
+      <span class="prego bottom-left"></span>
+    </button>
+
+    <!-- Tela do jogo (inicialmente escondida) -->
+    <div id="telaJogo" style="display: none;">
+      <p>CARREGANDO...</p>
+      <!-- Aqui entra o conteúdo real depois -->
+    </div>
+  </main>
+
+  <!-- Scripts -->
   <script src="js/menu.js"></script>
 </body>
 </html>

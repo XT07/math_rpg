@@ -29,3 +29,14 @@ document.addEventListener('click', function (event) {
     }
   }
 });
+
+function iniciarJogo() {
+  // Esconde o botão "JOGAR"
+  document.getElementById('botaoJogar').style.display = 'none';
+
+  // Mostra a área do jogo
+  document.getElementById('telaJogo').style.display = 'block';
+
+  // Se quiser simular um carregamento ou iniciar algo:
+  // setTimeout(() => iniciarJogoReal(), 1000);
+}
