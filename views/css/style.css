@@ -45,8 +45,6 @@ body {
     align-items: center; /* Centraliza itens horizontalmente */
     justify-content: flex-start; /* Alinha itens ao topo */
     /* Bordas arredondadas nos cantos direitos */
-    border-bottom-right-radius: 15px; 
-    border-top-right-radius: 15px;
 }
 
 .menu-lateral ul {
@@ -136,12 +134,10 @@ body {
         1px -1px 0px #000,
         -1px 1px 0px #000;
     /* Bordas arredondadas nos cantos esquerdos */
-    border-bottom-left-radius: 15px; 
-    border-top-left-radius: 15px;
 }
 
 .painel.ativo {
-    left: 200px; /* Posição do painel quando ativo (largura do menu-lateral) */
+    left: 80px; /* Posição do painel quando ativo (largura do menu-lateral) */
 } 
 
 /* Estilos para o conteúdo dentro dos painéis */
