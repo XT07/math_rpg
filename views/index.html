@@ -6,19 +6,53 @@
   <title>Províncias de Numerath</title>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+  <aside class="menu-lateral" id="menuLateral">
+    <ul>
+      <li onclick="abrirPainel('inicio')">
+        <i class="fas fa-home"></i> <span class="menu-texto"></span>
+      </li>
+      <li onclick="abrirPainel('como-jogar')">
+        <i class="fas fa-question-circle"></i> <span class="menu-texto"></span>
+      </li>
+      <li onclick="abrirPainel('config')">
+        <i class="fas fa-cog"></i> <span class="menu-texto"></span>
+      </li>
+    </ul>
+  </aside>
 
-  <div id="header"></div>
+  <div id="painel-inicio" class="painel">
+    <span class="fechar-painel" onclick="fecharPainel()">X</span>
+    <h2>Bem-vindo ao jogo!</h2>
+    <p>Prepare-se para explorar as províncias de Numerath e testar suas habilidades!</p>
+  </div>
+  <div id="painel-como-jogar" class="painel">
+    <span class="fechar-painel" onclick="fecharPainel()">X</span>
+    <h2>Como Jogar</h2>
+    <p>Aprenda as regras e estratégias para dominar o jogo.</p>
+    <ul>
+      <li>Objetivo: Alcance a pontuação máxima resolvendo desafios matemáticos.</li>
+      <li>Controles: Use o mouse para interagir com os elementos.</li>
+      <li>Dicas: Fique atento aos bônus de tempo!</li>
+    </ul>
+  </div>
+  <div id="painel-config" class="painel">
+    <span class="fechar-painel" onclick="fecharPainel()">X</span>
+    <h2>Configurações</h2>
+    <p>Ajuste o volume, gráficos e outras opções do jogo.</p>
+    <div class="config-item">
+      <label for="volume">Volume da Música:</label>
+      <input type="range" id="volume" min="0" max="100" value="50">
+    </div>
+    <div class="config-item">
+      <label for="efeitos">Volume dos Efeitos:</label>
+      <input type="range" id="efeitos" min="0" max="100" value="70">
+    </div>
+    <button>Salvar Configurações</button>
+  </div>
 
-  <!-- Fundo animado -->
-  <video autoplay muted loop id="bg-video">
-    <source src="img/FundoAnimado.mp4" type="video/mp4">
-    Seu navegador não suporta vídeos em HTML5.
-  </video>
-
-  <!-- Conteúdo principal central -->
   <main class="conteudo">
     <div class="ImagemTitulo">
       <img src="img/LogoProjeto.png" alt="LogoProjeto" class="logo">
@@ -27,27 +61,18 @@
         <h1>NUMERATH</h1>
       </div>
     </div>
-
-    <!-- Botão "JOGAR" -->
-    <button id="botaoJogar" class="jogar" onclick="iniciarJogo()">
+    <button class="jogar">
       JOGAR
       <span class="prego top-right"></span>
       <span class="prego bottom-left"></span>
     </button>
-
-    <!-- Tela do jogo (inicialmente escondida) -->
-    <div id="telaJogo" style="display: none;">
-      <p>CARREGANDO...</p>
-      <!-- Aqui entra o conteúdo real depois -->
-    </div>
   </main>
+  
+  <video autoplay muted loop id="bg-video">
+    <source src="img/FundoAnimado.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos em HTML5.
+  </video>
 
-  <!-- Scripts -->
   <script src="js/menu.js"></script>
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header').innerHTML = data);
-  </script>
 </body>
 </html>
