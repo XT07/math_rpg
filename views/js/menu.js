@@ -3,29 +3,41 @@ let painelAtivo = null;
 function abrirPainel(id) {
   const painel = document.getElementById(`painel-${id}`);
 
-  // Se já está aberto, fecha
+  // Se o painel clicado já está ativo, fecha-o
   if (painelAtivo === painel) {
     painel.classList.remove("ativo");
     painelAtivo = null;
   } else {
-    // Fecha os outros
+    // Fecha todos os outros painéis primeiro
     document.querySelectorAll(".painel").forEach(p => p.classList.remove("ativo"));
 
     // Abre o painel novo
-    painel.classList.add("ativo");
-    painelAtivo = painel;
+    if (painel) { // Adiciona uma verificação para garantir que o elemento exista
+      painel.classList.add("ativo");
+      painelAtivo = painel;
+    }
   }
 }
+
+// --- FUNÇÃO fecharPainel() ADICIONADA AQUI ---
+function fecharPainel() {
+  if (painelAtivo) {
+    painelAtivo.classList.remove("ativo");
+    painelAtivo = null;
+  }
+}
+// --- FIM DA FUNÇÃO fecharPainel() ---
+
 
 // Fecha o painel se clicar fora dele e do menu
 document.addEventListener('click', function (event) {
   const cliqueDentroPainel = painelAtivo && painelAtivo.contains(event.target);
-  const cliqueNoMenu = event.target.closest('.menu-lateral');
+  const menuLateral = document.querySelector('.menu-lateral'); // Seleciona o menu lateral
+  const cliqueNoMenu = menuLateral && menuLateral.contains(event.target); // Verifica se o clique foi dentro do menu lateral
 
   if (!cliqueDentroPainel && !cliqueNoMenu) {
     if (painelAtivo) {
-      painelAtivo.classList.remove("ativo");
-      painelAtivo = null;
+      fecharPainel(); // Chama a função fecharPainel() para fechar o painel ativo
     }
   }
 });

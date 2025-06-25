@@ -123,9 +123,9 @@ body {
     z-index: 999; /* Abaixo do menu-lateral para que o menu fique por cima */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: flex;
+    align-items: flex;
+    text-align: flex;
     font-size: 20px;
     /* Sombra de texto para destaque */
     text-shadow: 
@@ -142,7 +142,7 @@ body {
 
 /* Estilos para o conteúdo dentro dos painéis */
 .painel h2 {
-    font-size: 2.8em;
+    font-size: 1.8em;
     margin-bottom: 25px;
     color: #fff;
     text-shadow: 
