@@ -387,3 +387,29 @@ body {
 .ImagemTitulo h1 {
     animation: bounceIn 0.6s ease-out;
 }
+#painel-como-jogar {
+  max-height: 90vh;       /* Evita ultrapassar a tela */
+  overflow-y: auto;       /* Ativa rolagem se necessário */
+}
+
+/* Estiliza a barra de rolagem no Chrome, Edge e Safari */
+#painel-como-jogar::-webkit-scrollbar {
+  width: 8px;
+}
+
+#painel-como-jogar::-webkit-scrollbar-track {
+  background: #a65e07;
+  border-radius: 10px;
+}
+
+#painel-como-jogar::-webkit-scrollbar-thumb {
+  background: #7a3c00;
+  border-radius: 10px;
+  border: 2px solid #a65e07;
+}
+
+/* Opcional: suaviza a rolagem */
+#painel-como-jogar {
+  scroll-behavior: smooth;
+}
+
