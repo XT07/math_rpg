@@ -1,0 +1,401 @@
+body {
+    background-size: cover;
+    font-family: 'Luckiest Guy', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    background-image: url('../img/FundoParado.png'); /* Caminho da sua imagem de fundo */
+    background-position: center 70%; /* Posição ajustada da imagem de fundo */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100vh;
+    /* --- Cor do Menu Lateral: Tons do botão Jogar --- */
+    background: linear-gradient(to bottom, #d1752b, #b35d1f); 
+    border-right: 6px solid #8b3d00; 
+    border-top: 6px solid #8b3d00;   
+    border-bottom: 6px solid #8b3d00; 
+    box-shadow: 
+        2px 0 8px rgba(0, 0, 0, 0.4),
+        inset -2px 0 0px #9b4a12, 
+        inset 2px 0 0px #e0863c; 
+    color: rgb(0, 0, 0); 
+    padding: 30px 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* --- ESTILO DOS BOTÕES DO MENU LATERAL: Baseado no botão Jogar (CORRIGIDO) --- */
+.menu-lateral li {
+    margin: 25px 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 12px 15px;
+    color: #fff; /* Texto branco para contraste com o fundo marrom */
+    text-shadow: 
+        1px 1px 0px #000, /* Sombra de texto preta para legibilidade */
+        -1px -1px 0px #000,
+        1px -1px 0px #000,
+        -1px 1px 0px #000;
+    /* Cores do botão "Jogar" e painéis */
+    background: linear-gradient(to top, #c66b1f, #e0863c); /* Gradiente do botão Jogar */ 
+    border: 3px solid #8b3d00; /* Borda do botão Jogar e painéis */
+    border-radius: 8px;
+    box-shadow: 
+        inset -1px -1px 0px #9b4a12, /* Sombra interna mais escura */ 
+        inset 1px 1px 0px #ff9e42, /* Sombra interna mais clara/brilhante */
+        2px 2px 0px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-lateral li:hover {
+    background: linear-gradient(to top, #b35d1f, #c66b1f); /* Escurece no hover para feedback */
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 
+        inset -1px -1px 0px #7e3e00, 
+        inset 1px 1px 0px #ff9e42,
+        4px 4px 0px rgba(0, 0, 0, 0.4);
+}
+
+.menu-lateral li:active {
+    transform: translateY(0); /* Volta à posição original ao clicar */
+    box-shadow: 
+        inset 1px 1px 0px #7e3e00, /* Efeito de "pressionado" */ 
+        inset -1px -1px 0px #ff9e42,
+        1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+/* --- FIM DO ESTILO DOS BOTÕES DO MENU LATERAL --- */
+
+.painel {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 300px;
+    height: 100vh;
+    background: #c66b1f;
+    border: 6px solid #8b3d00;
+    box-shadow: 
+        inset -4px -4px 0 #9b4a12,
+        inset 4px 4px 0 #e0863c,
+        0 8px 15px rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 50px 25px;
+    transition: left 0.4s ease-out;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 20px;
+    text-shadow: 
+        1px 1px 0px #000,
+        -1px -1px 0px #000,
+        1px -1px 0px #000,
+        -1px 1px 0px #000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100vh;
+    box-sizing: border-box;
+}
+
+.painel.ativo {
+    left: 80px;
+} 
+
+.painel h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 
+        3px 3px 0px #000,
+        -3px -3px 0px #000,
+        3px -3px 0px #000,
+        -3px 3px 0px #000;
+}
+
+.painel p, .painel ul, .painel li {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.painel ul {
+    list-style: disc;
+    text-align: left;
+    margin-left: 20px;
+    color: #fff;
+}
+
+.painel li {
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.fechar-painel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8em;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-shadow: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 2px solid #8b3d00;
+}
+
+.fechar-painel:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.config-item { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.config-item label {
+    font-size: 1em;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.config-item input[type="range"] {
+    width: 80%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e0863c;
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid #8b3d00;
+    box-shadow: inset 1px 1px 0 #9b4a12, inset -1px -1px 0 #e0863c;
+}
+
+.config-item input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #8b3d00;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.painel button {
+    font-family: 'Luckiest Guy', sans-serif;
+    padding: 8px 15px;
+    font-size: 1em;
+    background: #a84f00;
+    border: 3px solid #5a2800;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset -1px -1px 0 #7e3e00, inset 1px 1px 0 #d16e00, 0 4px 0 #3b1c00;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-shadow: 
+        1px 1px 0px #000,
+        -1px -1px 0px #000;
+    margin-top: 15px; 
+    align-self: center;
+    width: fit-content;
+}
+
+.painel button:active {
+    transform: translateY(2px);
+    box-shadow: inset 1px 1px 0 #7e3e00, inset -1px -1px 0 #d16e00, 0 2px 0 #3b1c00;
+}
+
+.conteudo {
+    margin-left: 60px;
+    padding: 0;
+    width: calc(100% - 60px);
+    min-height: 100vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#telaInicial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.conteudo h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.conteudo h1 span {
+    display: block;
+    font-size: 2.5rem;
+    color: #1d6d60;
+}
+.jogar {
+    font-family: 'Luckiest Guy', sans-serif;
+    text-shadow: 
+      1px 1px 0px #000,
+      -1px -1px 0px #000,
+      1px -1px 0px #000,
+      -1px 1px 0px #000;
+    padding: 20px 150px;
+    font-size: 40px;
+    font-weight: 900;
+    background: #c66b1f; /* Cor de fundo do botão Jogar */
+    border: 4px solid #8b3d00;
+    color: #fff;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    box-shadow: inset -2px -2px 0 #9b4a12, inset 2px 2px 0 #e0863c, 0 4px 0 #5a2800;
+    margin-top: 30px;
+}
+.jogar:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.jogar::before,
+.jogar::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #aaa;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px #000000aa;
+}
+.jogar::before {
+    top: 6px;
+    left: 6px;
+}
+.jogar::after {
+    bottom: 6px;
+    right: 6px;
+}
+.jogar span.prego {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #aaa;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px #000000aa;
+}
+.jogar span.prego.top-right {
+    top: 6px;
+    right: 6px;
+}
+.jogar span.prego.bottom-left {
+    bottom: 6px;
+    left: 6px;
+}
+.ImagemTitulo {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.ImagemTitulo img {
+    width: 20%;
+    object-fit: cover;
+}
+.logo {
+    width: 120px;
+    margin-bottom: -50px;
+}
+.titulo h1 {
+    font-size: 60px;
+    color: #ff6a00;
+    margin: 0;
+    line-height: 1;
+    text-align: center;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 
+      1px 1px 0px #000,
+      -1px -1px 0px #000,
+      1px -1px 0px #000,
+      -1px 1px 0px #000;
+}
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.95) translateY(-10px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+.ImagemTitulo h1 {
+    animation: bounceIn 0.6s ease-out;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tela-jogo {
+    background-color: white;
+    border: 8px solid #c66b1f;
+    border-radius: 15px;
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    height: 70vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+    
+    margin: 0;
+}

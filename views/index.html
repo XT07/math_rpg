@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Províncias de Numerath</title>
-  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Províncias de Numerath</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <aside class="menu-lateral" id="menuLateral">
-    <ul>
-      <li onclick="abrirPainel('inicio')">
-        <i class="fas fa-home"></i> <span class="menu-texto"></span>
-      </li>
-      <li onclick="abrirPainel('como-jogar')">
-        <i class="fas fa-question-circle"></i> <span class="menu-texto"></span>
-      </li>
-      <li onclick="abrirPainel('config')">
-        <i class="fas fa-cog"></i> <span class="menu-texto"></span>
-      </li>
-    </ul>
-  </aside>
+    <audio id="backgroundMusic" loop autoplay>
+    <source src="audio/MusicaFundo.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
 
-  <div id="painel-inicio" class="painel">
-    <span class="fechar-painel" onclick="fecharPainel()">X</span>
-    <h2>Bem-vindo ao jogo!</h2>
-    <p>Prepare-se para explorar as províncias de Numerath e testar suas habilidades!</p>
-  </div>
-  <div id="painel-como-jogar" class="painel">
-    <span class="fechar-painel" onclick="fecharPainel()">X</span>
-    <h2>Como Jogar</h2>
-    <p>Aprenda as regras e estratégias para dominar o jogo.</p>
-    <ul>
-      <li>Objetivo: Alcance a pontuação máxima resolvendo desafios matemáticos.</li>
-      <li>Controles: Use o mouse para interagir com os elementos.</li>
-      <li>Dicas: Fique atento aos bônus de tempo!</li>
-    </ul>
-  </div>
-  <div id="painel-config" class="painel">
-    <span class="fechar-painel" onclick="fecharPainel()">X</span>
-    <h2>Configurações</h2>
-    <p>Ajuste o volume, gráficos e outras opções do jogo.</p>
-    <div class="config-item">
-      <label for="volume">Volume da Música:</label>
-      <input type="range" id="volume" min="0" max="100" value="50">
-    </div>
-    <div class="config-item">
-      <label for="efeitos">Volume dos Efeitos:</label>
-      <input type="range" id="efeitos" min="0" max="100" value="70">
-    </div>
-    <button>Salvar Configurações</button>
-  </div>
+    <aside class="menu-lateral" id="menuLateral">
+        <ul>
+            <li onclick="abrirPainel('inicio')">
+                <i class="fas fa-home"></i> <span class="menu-texto"></span>
+            </li>
+            <li onclick="abrirPainel('como-jogar')">
+                <i class="fas fa-question-circle"></i> <span class="menu-texto"></span>
+            </li>
+            <li onclick="abrirPainel('config')">
+                <i class="fas fa-cog"></i> <span class="menu-texto"></span>
+            </li>
+        </ul>
+    </aside>
 
-  <main class="conteudo">
-    <div class="ImagemTitulo">
-      <img src="img/LogoProjeto.png" alt="LogoProjeto" class="logo">
-      <div class="titulo">
-        <h1>PROVÍNCIAS DE</h1>
-        <h1>NUMERATH</h1>
-      </div>
+    <div id="painel-como-jogar" class="painel">
+        <span class="fechar-painel" onclick="fecharPainel()">X</span>
+        <h2>Como Jogar</h2>
+        <p>Aqui você saberá como seguir seu caminho!!</p>
+        <ul>
+            <li>Objetivo: Alcance a pontuação máxima resolvendo desafios matemáticos.</li>
+            <li>Controles: Use o mouse para interagir com os elementos.</li>
+            <li>Dicas: Fique atento aos bônus de tempo!</li>
+        </ul>
     </div>
-    <button class="jogar">
-      JOGAR
-      <span class="prego top-right"></span>
-      <span class="prego bottom-left"></span>
-    </button>
-  </main>
-  
-  <video autoplay muted loop id="bg-video">
-    <source src="img/FundoAnimado.mp4" type="video/mp4">
-    Seu navegador não suporta vídeos em HTML5.
-  </video>
+    <div id="painel-config" class="painel">
+        <span class="fechar-painel" onclick="fecharPainel()">X</span>
+        <h2>Configurações</h2>
+        <p>Aqui você pode ajustar o volume a sua escolha!!.</p>
+        <div class="config-item">
+            <label for="volume">Volume da Música:</label>
+            <input type="range" id="volume" min="0" max="100" value="50">
+        </div>
+        <div class="config-item">
+            <label for="efeitos">Volume dos Efeitos:</label>
+            <input type="range" id="efeitos" min="0" max="100" value="30">
+        </div>
+        <div class="config-item">
+            <label for="toggleMusic">Música Ativada:</label>
+            <input type="checkbox" id="toggleMusic" checked>
+        </div>
+        <button>Salvar Configurações</button>
+    </div>
 
-  <script src="js/menu.js"></script>
+    <main class="conteudo">
+        <div class="ImagemTitulo">
+            <img src="img/LogoProjeto.png" alt="LogoProjeto" class="logo">
+            <div class="titulo">
+                <h1>PROVÍNCIAS DE</h1>
+                <h1>NUMERATH</h1>
+            </div>
+        </div>
+        <button class="jogar" id="btnJogar">
+            JOGAR
+            <span class="prego top-right"></span>
+            <span class="prego bottom-left"></span>
+        </button>
+
+        <div id="telaJogo" class="tela-jogo hidden">
+            </div>
+    </main>
+    <script src="js/menu.js"></script>
 </body>
 </html>
