@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <audio id="backgroundMusic" loop autoplay>
+    <source src="audio/MusicaFundo.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
     <aside class="menu-lateral" id="menuLateral">
         <ul>
             <li onclick="abrirPainel('inicio')">
@@ -23,15 +28,10 @@
         </ul>
     </aside>
 
-    <div id="painel-inicio" class="painel">
-        <span class="fechar-painel" onclick="fecharPainel()">X</span>
-        <h2>Bem-vindo ao jogo!</h2>
-        <p>Prepare-se para explorar as províncias de Numerath e testar suas habilidades!</p>
-    </div>
     <div id="painel-como-jogar" class="painel">
         <span class="fechar-painel" onclick="fecharPainel()">X</span>
         <h2>Como Jogar</h2>
-        <p>Aprenda as regras e estratégias para dominar o jogo.</p>
+        <p>Aqui você saberá como seguir seu caminho!!</p>
         <ul>
             <li>Objetivo: Alcance a pontuação máxima resolvendo desafios matemáticos.</li>
             <li>Controles: Use o mouse para interagir com os elementos.</li>
@@ -41,14 +41,18 @@
     <div id="painel-config" class="painel">
         <span class="fechar-painel" onclick="fecharPainel()">X</span>
         <h2>Configurações</h2>
-        <p>Ajuste o volume, gráficos e outras opções do jogo.</p>
+        <p>Aqui você pode ajustar o volume a sua escolha!!.</p>
         <div class="config-item">
             <label for="volume">Volume da Música:</label>
             <input type="range" id="volume" min="0" max="100" value="50">
         </div>
         <div class="config-item">
             <label for="efeitos">Volume dos Efeitos:</label>
-            <input type="range" id="efeitos" min="0" max="100" value="70">
+            <input type="range" id="efeitos" min="0" max="100" value="30">
+        </div>
+        <div class="config-item">
+            <label for="toggleMusic">Música Ativada:</label>
+            <input type="checkbox" id="toggleMusic" checked>
         </div>
         <button>Salvar Configurações</button>
     </div>
@@ -70,12 +74,6 @@
         <div id="telaJogo" class="tela-jogo hidden">
             </div>
     </main>
-    
-    <video autoplay muted loop id="bg-video">
-        <source src="img/FundoAnimado.mp4" type="video/mp4">
-        Seu navegador não suporta vídeos em HTML5.
-    </video>
-
     <script src="js/menu.js"></script>
 </body>
 </html>
