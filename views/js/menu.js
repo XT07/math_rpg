@@ -1,11 +1,21 @@
 let painelAtivo = null;
+let activeMenuItem = null;
+
+// Temporary variables to hold settings before they are saved
+let tempBackgroundVolume = 0.5; // Default value
+let tempEffectsVolume = 0.3; // Default value
+let tempMusicMuted = true; // Default value
+
+let clickSound;
+let backgroundMusic;
 
 function abrirPainel(id) {
     const imagemTituloContainer = document.querySelector('.ImagemTitulo');
     const btnJogar = document.getElementById('btnJogar');
     const telaJogo = document.getElementById('telaJogo');
-    
-    playClickSound(); // Toca som de clique ao abrir/fechar painéis
+    const clickedMenuItem = document.querySelector(`.menu-lateral li[onclick*="abrirPainel('${id}')"]`);
+
+    playClickSound();
 
     if (id === 'inicio') {
         if (telaJogo) {
@@ -22,52 +32,91 @@ function abrirPainel(id) {
             painelAtivo.classList.remove("ativo");
             painelAtivo = null;
         }
+        if (activeMenuItem) {
+            activeMenuItem.classList.remove('active-menu-item');
+            activeMenuItem = null;
+        }
         return;
     }
 
     const painel = document.getElementById(`painel-${id}`);
 
     if (painelAtivo === painel) {
+        // Closing the currently active panel
         painel.classList.remove("ativo");
         painelAtivo = null;
+        if (activeMenuItem) {
+            activeMenuItem.classList.remove('active-menu-item');
+            activeMenuItem = null;
+        }
     } else {
+        // Opening a new panel
         document.querySelectorAll(".painel").forEach(p => p.classList.remove("ativo"));
         if (painel) {
             painel.classList.add("ativo");
-            painel.classList.add('iniciar-painel'); // Adiciona classe para animação, se desejar
+            painel.classList.add('iniciar-painel');
             painelAtivo = painel;
+
+            // Remove active class from previously active menu item
+            if (activeMenuItem) {
+                activeMenuItem.classList.remove('active-menu-item');
+            }
+            // Add active class to the clicked menu item
+            if (clickedMenuItem) {
+                clickedMenuItem.classList.add('active-menu-item');
+                activeMenuItem = clickedMenuItem;
+            }
+
+            // If opening the config panel, initialize sliders with current *applied* values
+            if (id === 'config') {
+                const volumeControl = document.getElementById('volume');
+                const efeitosControl = document.getElementById('efeitos');
+                const toggleMusic = document.getElementById('toggleMusic');
+
+                if (volumeControl && backgroundMusic) {
+                    volumeControl.value = backgroundMusic.volume * 100;
+                    tempBackgroundVolume = backgroundMusic.volume; // Set temp to current applied
+                }
+                if (efeitosControl && clickSound) {
+                    efeitosControl.value = clickSound.volume * 100;
+                    tempEffectsVolume = clickSound.volume; // Set temp to current applied
+                }
+                if (toggleMusic && backgroundMusic) {
+                    toggleMusic.checked = !backgroundMusic.muted;
+                    tempMusicMuted = backgroundMusic.muted; // Set temp to current applied mute state
+                }
+            }
         }
     }
 }
 
 function fecharPainel() {
-    playClickSound(); // Toca som de clique ao fechar painel
+    playClickSound();
     if (painelAtivo) {
         painelAtivo.classList.remove("ativo");
-        // painelAtivo.classList.remove('iniciar-painel'); // Opcional: remover classe de animação
         painelAtivo = null;
+    }
+    if (activeMenuItem) {
+        activeMenuItem.classList.remove('active-menu-item');
+        activeMenuItem = null;
     }
 }
 
-// Listener global para fechar painel clicando fora
 document.addEventListener('click', function (event) {
     const cliqueDentroPainel = painelAtivo && painelAtivo.contains(event.target);
     const menuLateral = document.querySelector('.menu-lateral');
     const cliqueNoMenu = menuLateral && menuLateral.contains(event.target);
 
-    // Se clicou fora do painel ativo E fora do menu lateral, fecha o painel
+
     if (painelAtivo && !cliqueDentroPainel && !cliqueNoMenu) {
         fecharPainel();
     }
 });
 
 
-let clickSound; 
-let backgroundMusic; 
-
 document.addEventListener('DOMContentLoaded', (event) => {
     const btnJogar = document.getElementById('btnJogar');
-    const imagemTituloContainer = document.querySelector('.ImagemTitulo'); 
+    const imagemTituloContainer = document.querySelector('.ImagemTitulo');
     const telaJogo = document.getElementById('telaJogo');
 
     backgroundMusic = document.getElementById('backgroundMusic');
@@ -75,88 +124,72 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const volumeControl = document.getElementById('volume');
     const efeitosControl = document.getElementById('efeitos');
 
-    // CORREÇÃO AQUI: Caminho e nome do arquivo do som de clique
-    clickSound = new Audio('sfx/SomClique.wav'); 
-    clickSound.volume = (efeitosControl ? efeitosControl.value / 100 : 0.7);
+    clickSound = new Audio('sfx/SomClique.wav');
 
-    // --- LÓGICA DE ÁUDIO NO CARREGAMENTO (Simplificada para sua decisão) ---
+    // Initialize actual audio volumes with their default temp values
     if (backgroundMusic) {
-        // Define o volume inicial da música (ela ainda está mutada pelo HTML por padrão)
-        backgroundMusic.volume = (volumeControl ? volumeControl.value / 100 : 0.5);
-        
-        // Garante que a música está mutada e pausada no carregamento,
-        // e o checkbox desmarcado (usuário precisará ativar)
-        backgroundMusic.muted = true;
-        backgroundMusic.pause(); // Garante que não está tocando
+        backgroundMusic.volume = tempBackgroundVolume;
+        backgroundMusic.muted = tempMusicMuted;
         if (toggleMusic) {
-            toggleMusic.checked = false; // Checkbox começa desligado
+            toggleMusic.checked = !tempMusicMuted;
         }
         console.log("Música de fundo iniciada em estado PAUSADO e MUTADO por padrão.");
     }
-    // --- FIM DA LÓGICA DE ÁUDIO NO CARREGAMENTO ---
+    if (clickSound) {
+        clickSound.volume = tempEffectsVolume;
+    }
 
 
-    // Listener para o toggle de música
     if (toggleMusic && backgroundMusic) {
         toggleMusic.addEventListener('change', () => {
-            if (toggleMusic.checked) {
-                backgroundMusic.muted = false; // Desmuta
-                if (backgroundMusic.paused) { // Se estava pausada, tenta tocar
-                    backgroundMusic.play().catch(e => console.error("Erro ao tocar música ao desmutar via checkbox:", e));
-                }
-            } else {
-                backgroundMusic.muted = true; // Muta
-                backgroundMusic.pause(); // Pausa explicitamente
-            }
+            tempMusicMuted = !toggleMusic.checked; // Update temporary mute state
         });
     }
 
-    // Listener para o controle de volume da música
-    if (volumeControl && backgroundMusic) {
+    if (volumeControl) { // Only update temporary variable
         volumeControl.addEventListener('input', () => {
-            backgroundMusic.volume = volumeControl.value / 100;
-            if (volumeControl.value > 0) {
-                // Se volume é maior que zero e está mutado ou pausado, desmuta e tenta tocar
-                if (backgroundMusic.muted || backgroundMusic.paused) {
-                    backgroundMusic.muted = false;
-                    backgroundMusic.play().catch(e => console.error("Erro ao tocar música ao ajustar volume:", e));
-                }
-                if(toggleMusic) toggleMusic.checked = true; // Marca o checkbox
-            } else { // volumeControl.value == 0
-                backgroundMusic.muted = true; // Muta
-                if(toggleMusic) toggleMusic.checked = false; // Desmarca o checkbox
-            }
+            tempBackgroundVolume = volumeControl.value / 100;
         });
     }
 
-    // Listener para o controle de volume dos efeitos
-    if (efeitosControl && clickSound) {
+    if (efeitosControl) { // Only update temporary variable
         efeitosControl.addEventListener('input', () => {
-            clickSound.volume = efeitosControl.value / 100;
+            tempEffectsVolume = efeitosControl.value / 100;
         });
     }
 
-    // Lógica para o botão "Jogar"
     if (btnJogar && imagemTituloContainer && telaJogo) {
         btnJogar.addEventListener('click', () => {
             playClickSound(); // Som de clique
-            imagemTituloContainer.classList.add('hidden'); 
-            btnJogar.classList.add('hidden');    
-            telaJogo.classList.remove('hidden'); 
-            telaJogo.style.opacity = '1';         
+            imagemTituloContainer.classList.add('hidden');
+            btnJogar.classList.add('hidden');
+            telaJogo.classList.remove('hidden');
+            telaJogo.style.opacity = '1';
         });
     }
 
-    // Adiciona som de clique ao botão "Salvar Configurações"
     const salvarConfigButton = document.querySelector('#painel-config button');
     if (salvarConfigButton) {
         salvarConfigButton.addEventListener('click', () => {
-            playClickSound();
+            // Apply saved settings here!
+            if (backgroundMusic) {
+                backgroundMusic.volume = tempBackgroundVolume;
+                backgroundMusic.muted = tempMusicMuted;
+                if (!backgroundMusic.muted && backgroundMusic.paused) {
+                    backgroundMusic.play().catch(e => console.error("Erro ao tocar música ao salvar configurações:", e));
+                } else if (backgroundMusic.muted && !backgroundMusic.paused) {
+                     backgroundMusic.pause(); // Pause if muted and currently playing
+                }
+            }
+            if (clickSound) {
+                clickSound.volume = tempEffectsVolume;
+            }
+
+            playClickSound(); // Play click sound after applying settings
             fecharPainel();
         });
     }
 
-    // Adiciona som de clique a todos os botões de fechar painel
     const fecharPainelButtons = document.querySelectorAll('.fechar-painel');
     fecharPainelButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -164,18 +197,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-    // Adiciona som de clique aos itens do menu lateral
+    // Add click sound to lateral menu items
     const menuItems = document.querySelectorAll('.menu-lateral li');
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
-            // A função abrirPainel() já chama playClickSound()
+            // The playClickSound() call is now handled inside abrirPainel and fecharPainel
+            // for more precise control based on panel state.
         });
     });
 });
 
 function playClickSound() {
     if (clickSound) {
-        clickSound.currentTime = 0; // Reinicia o áudio
+        clickSound.currentTime = 0;
         clickSound.play().catch(e => console.error("Erro ao tocar som de clique:", e));
     }
 }

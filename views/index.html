@@ -17,13 +17,19 @@
     <aside class="menu-lateral" id="menuLateral">
         <ul>
             <li onclick="abrirPainel('inicio')">
-                <i class="fas fa-home"></i> <span class="menu-texto"></span>
+                <i class="fas fa-home"></i>
             </li>
             <li onclick="abrirPainel('como-jogar')">
-                <i class="fas fa-question-circle"></i> <span class="menu-texto"></span>
+                <i class="fas fa-question-circle"></i>
             </li>
             <li onclick="abrirPainel('config')">
-                <i class="fas fa-cog"></i> <span class="menu-texto"></span>
+                <i class="fas fa-cog"></i>
+            </li>
+        </ul>
+
+        <ul class="menu-inferior">
+            <li onclick="abrirPainel('creditos')">
+                <i class="fas fa-users"></i>
             </li>
         </ul>
     </aside>
@@ -55,6 +61,34 @@
             <input type="checkbox" id="toggleMusic" checked>
         </div>
         <button>Salvar Configurações</button>
+    </div>
+
+    <div id="painel-creditos" class="painel">
+        <span class="fechar-painel" onclick="fecharPainel()">X</span>
+        <h2>Créditos do Projeto</h2>
+        <p>Conheça a equipe por trás de Províncias de Numerath:</p>
+        <ul class="lista-links-devs">
+            <li>
+                <a href="https://github.com/CristhianMazon" target="_blank" onclick="playClickSound()">
+                    <i class="fab fa-github"></i> Cristhian
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/ATalDaAiume" target="_blank" onclick="playClickSound()">
+                    <i class="fab fa-github"></i> Eloize
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/XT07" target="_blank" onclick="playClickSound()">
+                    <i class="fab fa-github"></i> Luiz
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/MiguelAntonioF4" target="_blank" onclick="playClickSound()">
+                    <i class="fab fa-github"></i> Miguel
+                </a>
+            </li>
+            </ul>
     </div>
 
     <main class="conteudo">
